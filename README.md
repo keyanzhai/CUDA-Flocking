@@ -1,9 +1,9 @@
 **University of Pennsylvania, CIS 565: GPU Programming and Architecture,
 Project 1 - Flocking**
 
-* (TODO) YOUR NAME HERE
-  * (TODO) [LinkedIn](), [personal website](), [twitter](), etc.
-* Tested on: (TODO) Windows 22, i7-2222 @ 2.22GHz 22GB, GTX 222 222MB (Moore 2222 Lab)
+* Keyan Zhai
+  * [LinkedIn]https://www.linkedin.com/in/keyanzhai), [personal website](https://keyanzhai.github.io/), [twitter](https://twitter.com/KeyanZhai31533), etc.
+* Tested on: Tested on: Windows 10 Pro, AMD Ryzen 7 5800X 8-Core Processor 3.80 GHz, RTX 3080 10GB (personal)
 
 ### (TODO: Your README)
 
