@@ -128,7 +128,7 @@ function rule3(Boid boid)
 end
 ```
 Based on [Conard Parker's notes](http://www.vergenet.net/~conrad/boids/pseudocode.html) with slight adaptations. For the purposes of an interesting simulation,
-we will say that two boids only influence each other according if they are
+we will say that two boids only influence each other accordingly if they are
 within a certain **neighborhood distance** of each other.
 
 We also have a simple [2D implementation in Processing](http://studio.sketchpad.cc/sp/pad/view/ro.9cbgCRcgbPOI6/rev.23)
@@ -185,7 +185,7 @@ Based on this observation, we can see that having each boid check every
 other boid is very inefficient, especially if (as in our standard parameters)
 the number of boids is large and the neighborhood distance is much smaller than
 the full simulation space. We can cull a lot of neighbor checks using a
-datastructure called a **uniform spatial grid**.
+data structure called a **uniform spatial grid**.
 
 A uniform grid is made up of cells that are at least as wide as the neighborhood
 distance and covers the entire simulation domain.
@@ -227,7 +227,7 @@ homework, we will use the value/key sort built into **Thrust**. See
 `Boids::unitTest` in `kernel.cu` for an example of how to use this.
 
 Your uniform grid will probably look something like this in GPU memory:
-- `dev_particleArrayIndices` - buffer containing a pointer for each boid to its
+- `dev_particleArrayIndices` - buffer containing a pointer (just an array index) for each boid to its
 data in dev_pos and dev_vel1 and dev_vel2
 - `dev_particleGridIndices` - buffer containing the grid index of each boid
 - `dev_gridCellStartIndices` - buffer containing a pointer for each cell to the
