@@ -1,16 +1,18 @@
+# CUDA Flocking
+
 **University of Pennsylvania, CIS 565: GPU Programming and Architecture,
 Project 1 - Flocking**
 
-* Keyan Zhai
-  * [LinkedIn](https://www.linkedin.com/in/keyanzhai), [personal website](https://keyanzhai.github.io/), [twitter](https://twitter.com/KeyanZhai31533), etc.
+* Author: Keyan Zhai
+  * [LinkedIn](https://www.linkedin.com/in/keyanzhai), [personal website](https://keyanzhai.github.io/), [twitter](https://twitter.com/KeyanZhai31533)
 * Tested on: Tested on: Windows 10 Pro, AMD Ryzen 7 5800X 8-Core Processor 3.80 GHz, RTX 3080 10GB (personal)
 
-### (TODO: Your README)
-
-Include screenshots, analysis, etc. (Remember, this is public, so don't put
-anything here that you don't want to share with the world.)
-
 ---
+
+| Naive Neighbor Search (~28 fps) | Scattered Uniform Grid (~430 fps) | Coherent Uniform Grid (~925 fps) |
+| --- | --- | --- |
+| ![](images/boids-naive-50000.gif) | ![](images/boids-scattered-50000.gif) | ![](images/boids-coherent-50000.gif) |
+
 
 # Performance Analysis
 
@@ -19,18 +21,18 @@ anything here that you don't want to share with the world.)
 * Q: For each implementation, how does changing the number of boids affect performance? Why do you think this is?
   * A: For all the 3 implementations, increasing the number of boids lowers the performance. Because more boids requires more computation for their velocity and position.
 
-    | Number of boids | Naive | Scattered Uniform Grid | Coherent Uniform Grid | 
+    | Number of boids | Naive (visualization enabled / disabled)| Scattered Uniform Grid (visualization enabled / disabled) | Coherent Uniform Grid (visualization enabled / disabled) | 
     | ----------- | ----------- | ----------- | ----------- |
-    | 5000    |  ~510 fps  |  ~1650 fps  |   ~1980 fps    |
-    | 10000   |  ~225 fps  |  ~1200 fps  |   ~1730 fps    |
-    | 20000   |  ~110 fps  |  ~870 fps   |   ~1560 fps    |
-    | 50000   |  ~28 fps  |  ~500 fps  |   ~1200 fps    | 
-    | 100000  |  ~8 fps  |  ~155 fps   |   ~820 fps     |
-    | 200000  | ~2.4 fps   |  ~70 fps  |   ~440 fps     |
-    | 500000  | ~0 fps   |  ~10 fps  |   ~130 fps     |
-    | 1000000 | ~0 fps   |  ~1 fps  |   ~40 fps    |
+    | 5000    | ~445 fps / ~510 fps  |  ~1180 fps / ~1650 fps  |   ~1300 fps / ~1980 fps    |
+    | 10000   | ~210 fps / ~225 fps  | ~930 fps / ~1200 fps  | ~1170 fps / ~1730 fps    |
+    | 20000   | ~106 fps / ~110 fps  | ~690 fps / ~870 fps   | ~1090 fps / ~1560 fps    |
+    | 50000   | ~28 fps / ~28 fps  | ~430 fps / ~500 fps  | ~925 fps / ~1200 fps    | 
+    | 100000  | ~8.6 fps / ~8.6 fps  | ~150 fps / ~155 fps   |  ~570 fps / ~820 fps     |
+    | 200000  | ~2.4 fps / ~2.4 fps   | ~65 fps / ~70 fps  | ~310 fps / ~440 fps     |
+    | 500000  | ~0 fps / ~0 fps   | ~10.8 fps / ~10.8 fps  | ~105 fps / ~130 fps     |
+    | 1000000 | ~0 fps / ~0 fps   | ~1 fps / ~1 fps  | ~38 fps / ~40 fps    |
 
-    Note: visualization disabled, testing on Microsoft Remote Desktop.
+    Note: visualization disabled was tested on Microsoft Remote Desktop.
 
 * Q: For each implementation, how does changing the block count and block size affect performance? Why do you think this is?
 
@@ -40,14 +42,14 @@ anything here that you don't want to share with the world.)
     | ----------- | ----------- | ----------- | ----------- | --- | --- |
     | 16 | 625 |  666   |  ~228 fps   | ~1330 fps  |   ~1780 fps |
     | 32 (warp size) | 313 | 333 | ~232  fps  | ~1233 fps  |  ~1700 fps    |
-    | 64 | 157 | 167 | ~230  fps  | ~1224 fps  | 1710 fps    |
+    | 64 | 157 | 167 | ~230  fps  | ~1224 fps  | ~1710 fps    |
     | 128 | 79 | 84  |  ~225 fps  |  ~1200 fps  |   ~1730 fps    |
     | 165 (not 2's power) | 61 | 65 | ~236 fps  | ~1230 fps  | ~1720 fps |
     | 256 | 40 | 42 | ~238 fps  | ~1200 fps  | ~1720 fps    | 
     | 512  | 20 | 21 | ~217 fps  |  ~1140 fps | ~1710 fps |
     | 1024 (max) | 10 | 11 | ~150 fps | ~1070 fps | ~1600 fps | 
 
-    Note: visualization disabled, testing on Microsoft Remote Desktop.
+    Note: visualization disabled, tested on Microsoft Remote Desktop.
 
     Block count is computed with block size. The block size by default is 128, which means there are 128 threads in one block. Changing the block size, the block count can be calculated accordingly. 
 
@@ -84,4 +86,4 @@ anything here that you don't want to share with the world.)
     | 2 * d   | / |  ~1200 fps  |   ~1730 fps    |
     | 1 * d   | / |  ~2040 fps  | ~2180 fps    |
 
-    Note: 10000 boids, visualization disabled, testing on Microsoft Remote Desktop.
+    Note: 10000 boids, visualization disabled, tested on Microsoft Remote Desktop.
