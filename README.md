@@ -1,22 +1,33 @@
 # CUDA Flocking
 
-**University of Pennsylvania, CIS 565: GPU Programming and Architecture,
-Project 1 - Flocking**
+* Author: Keyan Zhai ([LinkedIn](https://www.linkedin.com/in/keyanzhai), [personal website](https://keyanzhai.github.io/), [twitter](https://twitter.com/KeyanZhai31533))
+* Tested on: Windows 10 Pro, AMD Ryzen 7 5800X 8-Core Processor 3.80 GHz, RTX 3080 10GB (personal)
 
-* Author: Keyan Zhai
-  * [LinkedIn](https://www.linkedin.com/in/keyanzhai), [personal website](https://keyanzhai.github.io/), [twitter](https://twitter.com/KeyanZhai31533)
-* Tested on: Tested on: Windows 10 Pro, AMD Ryzen 7 5800X 8-Core Processor 3.80 GHz, RTX 3080 10GB (personal)
 
----
+Flocking simulation in C++/CUDA based on the Reynolds Boids algorithm, along with two levels of
+optimization: 
+1. a scattered uniform grid 
+2. a uniform grid with semi-coherent memory access
 
-| Naive Neighbor Search (~28 fps) | Scattered Uniform Grid (~430 fps) | Coherent Uniform Grid (~925 fps) |
+
+## Demo: 50,000 Boids Flocking
+
+| Naive Neighbor Search (~28 fps) | Optimization 1: Scattered Uniform Grid (~430 fps) | Optimization 2: Coherent Uniform Grid (~925 fps) |
 | --- | --- | --- |
-| ![](images/boids-naive-50000.gif) | ![](images/boids-scattered-50000.gif) | ![](images/boids-coherent-50000.gif) |
+| ![](images/naive.gif) | ![](images/scattered.gif) | ![](images/coherent.gif) |
+
+In the Boids flocking simulation, particles representing birds or fish
+(boids) move around the simulation space according to three rules:
+
+1. cohesion - boids move towards the perceived center of mass of their neighbors
+2. separation - boids avoid getting to close to their neighbors
+3. alignment - boids generally try to move with the same direction and speed as
+their neighbors
 
 
-# Performance Analysis
+## Performance Analysis
 
-## Questions
+### Questions
 
 * Q: For each implementation, how does changing the number of boids affect performance? Why do you think this is?
   * A: For all the 3 implementations, increasing the number of boids lowers the performance. Because more boids requires more computation for their velocity and position.
@@ -87,3 +98,8 @@ Project 1 - Flocking**
     | 1 * d   | / |  ~2040 fps  | ~2180 fps    |
 
     Note: 10000 boids, visualization disabled, tested on Microsoft Remote Desktop.
+
+    ---
+
+    **University of Pennsylvania, CIS 565: GPU Programming and Architecture,
+Project 1 - Flocking**
