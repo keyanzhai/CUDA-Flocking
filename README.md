@@ -3,20 +3,22 @@
 * Author: Keyan Zhai ([LinkedIn](https://www.linkedin.com/in/keyanzhai), [personal website](https://keyanzhai.github.io/), [twitter](https://twitter.com/KeyanZhai31533))
 * Tested on: Windows 10 Pro, AMD Ryzen 7 5800X 8-Core Processor 3.80 GHz, RTX 3080 10GB (personal)
 
+---
 
 Flocking simulation in C++/CUDA based on the Reynolds Boids algorithm, along with two levels of
 optimization: 
 1. a scattered uniform grid 
 2. a uniform grid with semi-coherent memory access
 
+![](images/boids.png)
 
 ## Demo: 50,000 Boids Flocking
 
-| Naive Neighbor Search (~28 fps) | Optimization 1: Scattered Uniform Grid (~430 fps) | Optimization 2: Coherent Uniform Grid (~925 fps) |
+| Naive Neighbor Search (~28 fps) | Scattered Uniform Grid (~430 fps) | Coherent Uniform Grid (~925 fps) |
 | --- | --- | --- |
 | ![](images/naive.gif) | ![](images/scattered.gif) | ![](images/coherent.gif) |
 
-In the Boids flocking simulation, particles representing birds or fish
+In the boids flocking simulation, particles representing birds or fish
 (boids) move around the simulation space according to three rules:
 
 1. cohesion - boids move towards the perceived center of mass of their neighbors
