@@ -24,11 +24,6 @@ In the boids flocking simulation, particles representing birds or fish
 3. alignment - boids generally try to move with the same direction and speed as
 their neighbors
 
-
-![](images/boids.png)
-
-
-
 ## Performance Analysis
 
 ### Questions
