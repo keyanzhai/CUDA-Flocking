@@ -16,8 +16,6 @@ optimization:
 | --- | --- | --- |
 | ![](images/naive.gif) | ![](images/scattered.gif) | ![](images/coherent.gif) |
 
-![](images/boids.png)
-
 In the boids flocking simulation, particles representing birds or fish
 (boids) move around the simulation space according to three rules:
 
@@ -25,6 +23,10 @@ In the boids flocking simulation, particles representing birds or fish
 2. separation - boids avoid getting to close to their neighbors
 3. alignment - boids generally try to move with the same direction and speed as
 their neighbors
+
+
+![](images/boids.png)
+
 
 
 ## Performance Analysis
