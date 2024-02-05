@@ -10,13 +10,13 @@ optimization:
 1. a scattered uniform grid 
 2. a uniform grid with semi-coherent memory access
 
-![](images/boids.png)
-
 ## Demo: 50,000 Boids Flocking
 
 | Naive Neighbor Search (~28 fps) | Scattered Uniform Grid (~430 fps) | Coherent Uniform Grid (~925 fps) |
 | --- | --- | --- |
 | ![](images/naive.gif) | ![](images/scattered.gif) | ![](images/coherent.gif) |
+
+![](images/boids.png)
 
 In the boids flocking simulation, particles representing birds or fish
 (boids) move around the simulation space according to three rules:
