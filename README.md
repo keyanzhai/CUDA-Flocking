@@ -1,5 +1,8 @@
 # CUDA Flocking
 
+**University of Pennsylvania, CIS 565: GPU Programming and Architecture,
+Project 1 - Flocking**
+
 * Author: Keyan Zhai ([LinkedIn](https://www.linkedin.com/in/keyanzhai), [personal website](https://keyanzhai.github.io/), [twitter](https://twitter.com/KeyanZhai31533))
 * Tested on: Windows 10 Pro, AMD Ryzen 7 5800X 8-Core Processor 3.80 GHz, RTX 3080 10GB (personal)
 
@@ -116,8 +119,3 @@ Block Count (cells) = (10648 + blockSize - 1) / blockSize
     | 1 * d   | / |  ~2040 fps  | ~2180 fps    |
 
     Note: 10000 boids, visualization disabled, tested on Microsoft Remote Desktop.
-
-    ---
-
-    **University of Pennsylvania, CIS 565: GPU Programming and Architecture,
-Project 1 - Flocking**
