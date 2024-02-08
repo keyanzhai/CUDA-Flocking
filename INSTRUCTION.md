@@ -61,7 +61,7 @@ In the Boids flocking simulation, particles representing birds or fish
 (boids) move around the simulation space according to three rules:
 
 1. cohesion - boids move towards the perceived center of mass of their neighbors
-2. separation - boids avoid getting to close to their neighbors
+2. separation - boids avoid getting too close to their neighbors
 3. alignment - boids generally try to move with the same direction and speed as
 their neighbors
 

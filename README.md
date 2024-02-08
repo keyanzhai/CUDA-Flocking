@@ -1,4 +1,4 @@
-# CUDA Flocking
+# CUDA Flocking Simulation
 
 **University of Pennsylvania, CIS 565: GPU Programming and Architecture,
 Project 1 - Flocking**
@@ -15,6 +15,8 @@ optimization:
 
 ## Demo: 50,000 Boids Flocking
 
+![](images/boids.png)
+
 | Naive Neighbor Search (~28 fps) | Scattered Uniform Grid (~430 fps) | Coherent Uniform Grid (~925 fps) |
 | --- | --- | --- |
 | ![](images/naive.gif) | ![](images/scattered.gif) | ![](images/coherent.gif) |
@@ -23,7 +25,7 @@ In the boids flocking simulation, particles representing birds or fish
 (boids) move around the simulation space according to three rules:
 
 1. cohesion - boids move towards the perceived center of mass of their neighbors
-2. separation - boids avoid getting to close to their neighbors
+2. separation - boids avoid getting too close to their neighbors
 3. alignment - boids generally try to move with the same direction and speed as
 their neighbors
 
@@ -93,7 +95,13 @@ Block Count (cells) = (10648 + blockSize - 1) / blockSize
 
 ### FPS vs Cell Width
 
-## Building Instructions
+Data: 
+| Cell Width | Number of Neighbor Cells Checking | Scattered Uniform Grid | Coherent Uniform Grid | 
+| ----------- | ----------- | ----------- | ----------- |
+| 2 * neighboring distance   | 8 |  ~1200 fps  |   ~1730 fps    |
+| 1 * neighboring distance   | 27 |  ~2040 fps  | ~2180 fps    |
+
+Note: 10000 boids, visualization disabled, tested on Microsoft Remote Desktop.
 
 ## Q & A
 
@@ -112,10 +120,3 @@ Block Count (cells) = (10648 + blockSize - 1) / blockSize
 * Q: Did changing cell width and checking 27 vs 8 neighboring cells affect performance? Why or why not? Be careful: it is insufficient (and possibly incorrect) to say that 27-cell is slower simply because there are more cells to check!
   * A: Cell width by default is 2 times the neighboring distance `d`, and 8 neighboring cells will be checked at maximum. Changing the cell width to 1 neighboring distance, 27 neighboring cells will be checked, but the performance improves.
   Changing cell width and checking 27 vs 8 neighboring cells did affect performance. The reason is that checking 8 neighboring cells instead of all the 27 neighboring cells will cause branch divergence for the threads within a warp, which will lower the performance.
-
-    | Cell Width | Naive | Scattered Uniform Grid | Coherent Uniform Grid | 
-    | ----------- | ----------- | ----------- | ----------- |
-    | 2 * d   | / |  ~1200 fps  |   ~1730 fps    |
-    | 1 * d   | / |  ~2040 fps  | ~2180 fps    |
-
-    Note: 10000 boids, visualization disabled, tested on Microsoft Remote Desktop.
